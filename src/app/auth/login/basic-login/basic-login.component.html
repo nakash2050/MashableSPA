@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="login-card card-body auth-body">
-          <form class="md-float-material">
+          <form class="md-float-material" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div class="text-center">
               <img src="assets/images/auth/logo.png" alt="logo.png">
             </div>
@@ -13,35 +13,40 @@
                   <h3 class="text-left txt-primary">Sign In</h3>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="input-group">
-                <input type="email" class="form-control" placeholder="Your Email Address">
-                <span class="md-line"></span>
-              </div>
-              <div class="input-group">
-                <input type="password" class="form-control" placeholder="Password">
-                <span class="md-line"></span>
-              </div>
-              <div class="row m-t-25 text-left">
-                <div class="col-sm-7 col-xs-12">
-                  <div class="checkbox-fade fade-in-primary">
-                    <label>
-                      <input type="checkbox" value="">
-                      <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                      <span class="text-inverse">Remember me</span>
-                    </label>
-                  </div>
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
                 </div>
-                <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                  <a [routerLink]="['/auth/forgot']" class="text-right f-w-600 text-inverse"> Forgot Your Password?</a>
+                <input type="email" class="form-control" placeholder="Username" name="username"
+                  [(ngModel)]="username" autocomplete="off" required #refUsername="ngModel"
+                  [class.is-invalid]="refUsername.touched && refUsername.invalid">
+                <span class="md-line">
+                </span>
+                <div *ngIf="refUsername.errors?.required" class="invalid-feedback text-left">Username is required</div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                </div>
+                <input type="password" class="form-control" placeholder="Password" name="password"
+                  [(ngModel)]="password" autocomplete="off" required #refPassword="ngModel"
+                  [class.is-invalid]="refPassword.touched && refPassword.invalid">
+                <span class="md-line"></span>
+                <div *ngIf="refPassword.errors?.required" class="invalid-feedback text-left">Password is required</div>
+              </div>
+              <div class="row m-t-25 text-right">
+                <div class="col-sm-12 col-xs-12 forgot-phone text-right">
+                  <a [routerLink]="['/auth/registration']" class="text-right f-w-600 text-inverse"> New user? Register here</a>
                 </div>
               </div>
               <div class="row m-t-30">
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign in</button>
+                  <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" [disabled]="loginForm.invalid">Sign
+                    in</button>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
                 <div class="col-md-10">
                   <p class="text-inverse text-left m-b-0">Thank you and enjoy our website.</p>

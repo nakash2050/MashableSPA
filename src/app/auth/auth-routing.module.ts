@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: {
+      breadcrumb: 'Login',
+      status: false
+    },
   },
   {
     path: '',
@@ -16,10 +20,16 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
+        data: {
+          breadcrumb: 'Login'
+        },
         loadChildren: () => import('./login/basic-login/basic-login.module').then(m => m.BasicLoginModule)
       },
       {
         path: 'registration',
+        data: {
+          breadcrumb: 'Registration'
+        },
         loadChildren: () => import('./registration/basic-reg/basic-reg.module').then(m => m.BasicRegModule)
       }
     ]

@@ -1,0 +1,5 @@
+export const ROLE_NAME = {
+    ADMIN: 'ADMIN',
+    EMPLOYEE: 'EMPLOYEE',
+    CUSTOMER: 'CUSTOMER'
+}

@@ -2,6 +2,9 @@ import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angu
 import {state, style, transition, animate, trigger, AUTO_STYLE} from '@angular/animations';
 import 'rxjs/add/operator/filter';
 import {MenuItems} from '../../shared/menu-items/menu-items';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { ROUTE_PATH } from 'src/app/constants/route-name.constant';
 
 @Component({
   selector: 'app-admin',
@@ -64,14 +67,20 @@ export class AdminComponent implements OnInit {
 
   config: any;
 
-  constructor(public menuItems: MenuItems) {
+  constructor(
+    public menuItems: MenuItems,
+    private authService: AuthService,
+    private router: Router
+  ) {
     const scrollHeight = window.screen.height - 150;
     this.innerHeight = scrollHeight + 'px';
     this.windowWidth = window.innerWidth;
     this.setMenuAttributs(this.windowWidth);
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.authService.assignLoggedInUserName();
+  }
 
   onClickedOutside(e: Event) {
     if (this.windowWidth < 768 && this.toggleOn && this.verticalNavType !== 'offcanvas') {
@@ -146,12 +155,21 @@ export class AdminComponent implements OnInit {
       this.verticalNavType = this.verticalNavType === 'expanded' ? 'offcanvas' : 'expanded';
     }
   }
+
   onMobileMenu() {
     this.isCollapsedMobile = this.isCollapsedMobile === 'yes-block' ? 'no-block' : 'yes-block';
   }
 
   onScroll(event) {
     this.isScrolled = false;
+  }
+
+  logout() {
+    const isLoggedOut = this.authService.logout();
+
+    if (isLoggedOut) {
+      this.router.navigate([ROUTE_PATH.AUTH.MAIN, ROUTE_PATH.AUTH.LOGIN]);
+    }
   }
 
 }

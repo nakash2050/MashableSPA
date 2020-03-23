@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -10,6 +10,11 @@ import { BreadcrumbsComponent } from './layouts/admin/breadcrumbs/breadcrumbs.co
 import { AuthComponent } from './layouts/auth/auth.component';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { AppErrorHandler } from './shared/error-handlers/app-error-handler';
+import { ErrorInterceptorProvider } from './shared/error.interceptor';
+import { AppProgressBarModule } from './modules/app-progress-bar.module';
+import { AppJwtAuthModule } from './modules/app-jwt-auth-module';
 
 
 @NgModule({
@@ -24,9 +29,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    AppJwtAuthModule,
+    AppProgressBarModule
   ],
-  providers: [],
+  providers: [
+    ErrorInterceptorProvider,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
