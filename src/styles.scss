@@ -14904,7 +14904,7 @@ table {
 }
 
 .auth-body {
-  min-width: 520px;
+  max-width: 420px;
 }
 
 .login-card {
@@ -15035,6 +15035,8 @@ table {
   border-radius: 8px;
   margin: 20px 0 0 0;
   padding: 20px;
+  max-width:420px;
+  min-width:420px;
   .confirm h3 {
     color: #0073aa;
     font-size: 34px;

@@ -109,14 +109,8 @@
                   Password is required</div>
                 <div class="invalid-feedback text-left"
                   *ngIf="!RegistrationFormControls['password'].errors?.required && RegistrationFormControls['password'].errors?.passwordComplexityFailed">
-                  <ul>
-                    <li>Must be at least 8 characters</li>
-                    <li>1 upper case letter</li>
-                    <li>1 lower case letter</li>
-                    <li>1 number</li>
-                    <li>1 special character</li>
-                  </ul>
-                </div>
+                  Password must be at least 8 characters long with 1 upper case letter, 1 lower case letter, 1 number
+                  and 1 special character.</div>
                 <span class="md-line"></span>
               </div>
               <div class="input-group">
@@ -145,14 +139,14 @@
                   Please select the a Role</div>
                 <span class="md-line"></span>
               </div>
-              <div class="row m-t-25 text-left">
-                <div class="col-sm-12 col-xs-12 forgot-phone text-right">
-                  <a [routerLink]="['/auth/login']" class="text-right f-w-600 text-inverse"> Already registered? Sign in</a>
-                </div>
-              </div>
               <div class="row m-t-30">
                 <div class="col-md-12">
                   <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" [disabled]="registrationForm.invalid">Sign up now.</button>
+                </div>
+              </div>
+              <div class="row m-t-25 text-left">
+                <div class="col-sm-12 col-xs-12 forgot-phone text-right">
+                  <a [routerLink]="['/auth/login']" class="text-right f-w-600 text-inverse"> Already registered? Sign in</a>
                 </div>
               </div>
               <hr/>
