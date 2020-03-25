@@ -15,6 +15,7 @@ import { AppErrorHandler } from './shared/error-handlers/app-error-handler';
 import { ErrorInterceptorProvider } from './shared/error.interceptor';
 import { AppProgressBarModule } from './modules/app-progress-bar.module';
 import { AppJwtAuthModule } from './modules/app-jwt-auth-module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AppJwtAuthModule } from './modules/app-jwt-auth-module';
     SharedModule,
     HttpClientModule,
     AppJwtAuthModule,
-    AppProgressBarModule
+    AppProgressBarModule,
+    ModalModule.forRoot()
   ],
   providers: [
     ErrorInterceptorProvider,

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ROUTE_PATH } from 'src/app/constants/route-name.constant';
 import { CustomValidators } from 'src/app/shared/custom.valiators';
 import { BadRequestError } from 'src/app/shared/error-handlers/bad-request-error';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-basic-reg',
@@ -52,8 +53,11 @@ export class BasicRegComponent implements OnInit {
   registerUser(): void {
     this.authService.registerUser(this.registrationForm.value)
       .subscribe(() => {
+        this.registrationForm.reset();
         this.alertify.success('You have been registered successfully! Please Sign in.');
-        this.router.navigate(['auth','login']);
+        setTimeout(() => {
+          this.router.navigate(['auth','login']);
+        }, 5000);
       }, error => {
         if (error instanceof BadRequestError) {
           this.alertify.error(error.originalError);

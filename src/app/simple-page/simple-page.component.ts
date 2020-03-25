@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimplePageComponent implements OnInit {
 
+  dtOptions: DataTables.Settings = {};
+
   constructor() { }
 
   ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
   }
 
 }

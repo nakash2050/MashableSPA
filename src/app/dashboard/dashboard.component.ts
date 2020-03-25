@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, TemplateRef} from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 declare var $: any;
 
 @Component({
@@ -75,10 +76,30 @@ export class DashboardComponent implements OnInit {
       }
     }
   };
-  constructor() {}
+
+  modalRef: BsModalRef;
+  config = {
+    class: 'modal-md',
+    ignoreBackdropClick: true
+    
+  };
+  
+  constructor(private modalService: BsModalService) {}
 
   ngOnInit() {
-    
   }
 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, this.config);
+  }
+ 
+  confirm(): void {
+    console.log('Confirmed!');
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    console.log('Declined!');
+    this.modalRef.hide();
+  }
 }

@@ -123,7 +123,7 @@
               <td>24</td>
               <td><button type="button" class="btn btn-primary">$550</button></td>
               <td>M oscow,Lenina 44-1</td>
-              <td><button type="button" class="btn btn-success btn-round btn-outline-success">View</button></td>
+              <td><button type="button" class="btn btn-success btn-round btn-outline-success" (click)="openModal(template)">View</button></td>
             </tr>
             <tr>
               <td>2. Awesome T-shirt</td>
@@ -390,3 +390,12 @@
   </div>
   <!-- End-->
 </div>
+
+
+<<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
