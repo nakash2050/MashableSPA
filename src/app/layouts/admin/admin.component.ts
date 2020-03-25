@@ -69,7 +69,7 @@ export class AdminComponent implements OnInit {
 
   constructor(
     public menuItems: MenuItems,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {
     const scrollHeight = window.screen.height - 150;

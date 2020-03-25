@@ -22,7 +22,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
-        this.alertify.clear();
         return;
       }
       window.scrollTo(0, 0);

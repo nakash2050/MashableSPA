@@ -25,7 +25,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/flag-icon-css/sass/flag-icon.scss",
+              
               "node_modules/ti-icons/css/themify-icons.css",
               "node_modules/simple-line-icons/scss/simple-line-icons.scss",
               "src/assets/icon/icofont/css/icofont.css",
