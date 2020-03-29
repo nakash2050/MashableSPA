@@ -57,7 +57,7 @@ export class BasicRegComponent implements OnInit {
         this.alertify.success('You have been registered successfully! Please Sign in.');
         setTimeout(() => {
           this.router.navigate(['auth','login']);
-        }, 5000);
+        }, 3000);
       }, error => {
         if (error instanceof BadRequestError) {
           this.alertify.error(error.originalError);
